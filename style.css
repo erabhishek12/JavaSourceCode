@@ -293,11 +293,11 @@ body {
     font-weight: 700;
 }
 
-/* ==== SVG LOADER (replace code-wave) ==== */
+/* === SVG Loader inside old loading screen theme === */
 
 .loader {
-    --path: #ffffff;
-    --dot: #f40af0;              /* chaaho to yaha apna accent color var(--primary-300) use kar sakte ho */
+    --path: #ffffff;      /* white stroke */
+    --dot: #f40af0;       /* chhota moving dot color – chahe to change karo */
     --duration: 3s;
     width: 64px;
     height: 64px;
@@ -328,9 +328,9 @@ body {
     height: 100%;
 }
 
+.loader svg circle,
 .loader svg rect,
-.loader svg polygon,
-.loader svg circle {
+.loader svg polygon {
     fill: none;
     stroke: var(--path);
     stroke-width: 10px;
@@ -338,7 +338,7 @@ body {
     stroke-linecap: round;
 }
 
-/* Circle path animation */
+/* Circle animation (jo hum use kar rahe hain) */
 .loader svg circle {
     stroke-dasharray: 150 50 150 50;
     stroke-dashoffset: 75;
@@ -347,26 +347,7 @@ body {
         infinite;
 }
 
-/* Rect path (agar baad me square/rect use karna ho) */
-.loader svg rect {
-    stroke-dasharray: 192 64 192 64;
-    stroke-dashoffset: 0;
-    animation: pathRect var(--duration)
-        cubic-bezier(0.785, 0.135, 0.15, 0.86)
-        infinite;
-}
-
-/* Triangle path (agar future me chahiye) */
-.loader svg polygon {
-    stroke-dasharray: 145 76 145 76;
-    stroke-dashoffset: 0;
-    animation: pathTriangle var(--duration)
-        cubic-bezier(0.785, 0.135, 0.15, 0.86)
-        infinite;
-}
-
-/* KEYFRAMES */
-
+/* Agar aage rect / triangle use karna ho to ready hai */
 @keyframes pathCircle {
     25% { stroke-dashoffset: 125; }
     50% { stroke-dashoffset: 175; }
@@ -3996,4 +3977,5 @@ Would you like me to continue with the remaining CSS and then the JavaScript fil
         --glass-border: rgba(255, 255, 255, 0.3);
     }
 }
+
 
