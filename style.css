@@ -293,19 +293,107 @@ body {
     font-weight: 700;
 }
 
-.code-wave span {
-    animation: codeWave 1.5s ease-in-out infinite;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+/* ==== SVG LOADER (replace code-wave) ==== */
+
+.loader {
+    --path: #ffffff;
+    --dot: #f40af0;              /* chaaho to yaha apna accent color var(--primary-300) use kar sakte ho */
+    --duration: 3s;
+    width: 64px;
+    height: 64px;
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
 }
 
-.code-wave span:nth-child(1) { animation-delay: 0s; }
-.code-wave span:nth-child(2) { animation-delay: 0.2s; }
-.code-wave span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes codeWave {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-30px) scale(1.1); }
+.loader:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: absolute;
+    display: block;
+    background: var(--dot);
+    top: 37px;
+    left: 19px;
+    transform: translate(-18px, -18px);
+    animation: dotRect var(--duration)
+        cubic-bezier(0.785, 0.135, 0.15, 0.86)
+        infinite;
 }
+
+.loader svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.loader svg rect,
+.loader svg polygon,
+.loader svg circle {
+    fill: none;
+    stroke: var(--path);
+    stroke-width: 10px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+/* Circle path animation */
+.loader svg circle {
+    stroke-dasharray: 150 50 150 50;
+    stroke-dashoffset: 75;
+    animation: pathCircle var(--duration)
+        cubic-bezier(0.785, 0.135, 0.15, 0.86)
+        infinite;
+}
+
+/* Rect path (agar baad me square/rect use karna ho) */
+.loader svg rect {
+    stroke-dasharray: 192 64 192 64;
+    stroke-dashoffset: 0;
+    animation: pathRect var(--duration)
+        cubic-bezier(0.785, 0.135, 0.15, 0.86)
+        infinite;
+}
+
+/* Triangle path (agar future me chahiye) */
+.loader svg polygon {
+    stroke-dasharray: 145 76 145 76;
+    stroke-dashoffset: 0;
+    animation: pathTriangle var(--duration)
+        cubic-bezier(0.785, 0.135, 0.15, 0.86)
+        infinite;
+}
+
+/* KEYFRAMES */
+
+@keyframes pathCircle {
+    25% { stroke-dashoffset: 125; }
+    50% { stroke-dashoffset: 175; }
+    75% { stroke-dashoffset: 225; }
+    100% { stroke-dashoffset: 275; }
+}
+
+@keyframes pathRect {
+    25% { stroke-dashoffset: 64; }
+    50% { stroke-dashoffset: 128; }
+    75% { stroke-dashoffset: 192; }
+    100% { stroke-dashoffset: 256; }
+}
+
+@keyframes pathTriangle {
+    33% { stroke-dashoffset: 74; }
+    66% { stroke-dashoffset: 147; }
+    100% { stroke-dashoffset: 221; }
+}
+
+@keyframes dotRect {
+    25% { transform: translate(0, 0); }
+    50% { transform: translate(18px, -18px); }
+    75% { transform: translate(0, -36px); }
+    100% { transform: translate(-18px, -18px); }
+}
+
 
 .loading-title {
     font-size: var(--text-4xl);
@@ -3908,3 +3996,4 @@ Would you like me to continue with the remaining CSS and then the JavaScript fil
         --glass-border: rgba(255, 255, 255, 0.3);
     }
 }
+
