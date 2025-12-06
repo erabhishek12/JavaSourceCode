@@ -90,14 +90,37 @@
     <div class="cursor-outline" data-cursor-outline></div>
 
     <!-- Enhanced Loading Screen -->
-<div class="loading-logo">
-    <!-- NEW SVG LOADER -->
-    <div class="loader loader-circle">
-        <svg viewBox="0 0 80 80">
-            <circle cx="40" cy="40" r="32"></circle>
-        </svg>
+<div id="loadingScreen" class="loading-screen">
+    <div class="loading-content">
+        <div class="loading-logo">
+            <!-- NEW SVG LOADER -->
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <circle cx="40" cy="40" r="32"></circle>
+                </svg>
+            </div>
+        </div>
+
+        <h2 class="gradient-text-animated loading-title">JavaSourceCode</h2>
+
+        <p class="loading-text" id="loadingText">
+            Initializing Educational Platform...
+        </p>
+
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+
+        <div class="loading-percentage" id="loadingPercentage">0%</div>
+
+        <div class="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
 </div>
+
 
 
     <!-- Progress Bar -->
@@ -1637,5 +1660,6 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
