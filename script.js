@@ -44,17 +44,17 @@ onAuthStateChanged(auth, (user) => {
         console.log("✅ User already logged in:", user.email);
         
         // Prevent back navigation
-        history.pushState(null, null, location.href);
-        window.onpopstate = function () {
-            history.go(1);
-        };
+        //history.pushState(null, null, location.href);
+        //window.onpopstate = function () {
+           // history.go(1);
+       // };
         
         // Show success modal and redirect
-        showSuccessModal(user.displayName || user.email);
+        //showSuccessModal(user.displayName || user.email);
         
-        setTimeout(() => {
-            window.location.replace('dashboard.html');
-        }, 2000);
+        //setTimeout(() => {
+          //  window.location.replace('dashboard.html');
+       // }, 2000);
     } else {
         console.log("❌ No user logged in - showing auth forms");
         document.getElementById('authContainer').style.display = 'block';
